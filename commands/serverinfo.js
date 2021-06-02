@@ -4,7 +4,7 @@ module.exports = {
 	name: 'serverinfo',
 
 	// command description
-	usage: 'gets info on a server',
+	usage: 'Gets info on a server',
 
 	// sends server name and total member count
 	execute(message) {
