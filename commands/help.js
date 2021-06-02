@@ -22,7 +22,7 @@ module.exports = {
         content.push(commands.map(command => ("**" + command.name + ":** " + command.usage)).join("\n"));
 
         // Send the help message
-        message.channel.send(content);
+        message.channel.send(content, { split: true });
 
         // Return
         return;
