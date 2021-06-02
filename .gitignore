@@ -1,0 +1,5 @@
+# Ignore Node.js modules directory
+node_modules
+/package-lock.json
+# Never commit keys
+.env
