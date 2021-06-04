@@ -24,6 +24,6 @@ module.exports = {
     // This is an array representing all response message for a particular response.
     // This does need to be an array, even if there is only one response it must be formatted
     // as an array, just with a singular value.
-    responses: [" human sexuality and romance are rather convuluted"],
+    responses: [" human sexuality and romance are rather convoluted"],
 
 }
