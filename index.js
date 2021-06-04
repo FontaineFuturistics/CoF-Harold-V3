@@ -96,7 +96,7 @@ client.on('ready', () => {
 });
 
 // User join block
-client.on("guildAdd", async Member => {
+client.on("guildMemberAdd", async Member => {
 
     // Check that the server is Firnando
     if (Member.guild.id != firnandoID) return;
@@ -105,10 +105,10 @@ client.on("guildAdd", async Member => {
     client.channels.cache.get('642203556841127958').send('https://www.youtube.com/watch?v=R2kovI6tpRE'); 
 
     // Send message into log channel
-    client.channels.cache.get('833783384937070613').send(User.displayName + ' has joined the server');
+    client.channels.cache.get('833783384937070613').send(Member.displayName + ' has joined the server');
 
     // Send something into the logs
-    console.log(timestamp() + " " + User.displayName + " has joined the server."); 
+    console.log(timestamp() + " " + Member.displayName + " has joined the server."); 
 
 });
 
@@ -141,7 +141,7 @@ client.on('message', message => {
         const command = args.shift().toLowerCase();
 
         // Get senduserID
-        var senduserID = message.author.id;
+        var senduserName = message.author.username;
 
         // Check that the command requested exists
         if (!client.commands.has(command)) {
@@ -152,7 +152,7 @@ client.on('message', message => {
         // Try to execute the command and report an error if it occurs
         try {
             client.commands.get(command).execute(message, args);
-            console.log(timestamp() + ' A ' + command + ' command was run by ' + senduserID)
+            console.log(timestamp() + ' A ' + command + ' command was run by ' + senduserName)
         } catch (error) {
             console.error(error);
             message.reply('There was an error trying to execute that command!');
@@ -195,28 +195,34 @@ client.on('message', message => {
             // If all trigger words for the current response are present, run the response
             if (allTrigs == true) {
 
-                // Decide whether or not to respond
-                var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).chance, 10)));
+                // If the response has a complex trigger, call that, otherwise do it in index
+                if (typeof client.responses.get(cword).compTrig == "function") {
+                    client.responses.get(cword).compTrig(message);
+                } else {
 
-                // If random isn't the lowest possible value, return
-                if (random != 0) continue;
+                    // Decide whether or not to respond
+                    var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).chance, 10)));
 
-                // Generate a new random number to decide which response to give
-                var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).responses.length, 10)));
+                    // If random isn't the lowest possible value, return
+                    if (random == 0) {
 
-                // Select the response
-                var response = client.responses.get(cword).responses[random];
+                        // Generate a new random number to decide which response to give
+                        var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).responses.length, 10)));
 
-                // Send the message
-                message.channel.send(response);
+                        // Select the response
+                        var response = client.responses.get(cword).responses[random];
 
-                // Exit out so only one response is sent
-                return;
+                        // Send the message
+                        message.channel.send(response);
 
+                        // Exit out so only one response is sent
+                        return;
+
+                    }
+                }
             }
         }
     }
-
 });
 
 // Use login credentials
