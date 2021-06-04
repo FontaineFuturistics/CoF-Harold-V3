@@ -58,6 +58,9 @@ const uuccBotCmd = '773620818373902348';
 // startup message channels from config.json
 const startup = config.startup;
 
+// Response module array
+const resMod = config.response;
+
 /* Join link:
  * https://discord.com/api/oauth2/authorize?client_id=<746029175294656582>&scope=applications.commands
  */
@@ -91,6 +94,38 @@ client.on('ready', () => {
     client.user.setActivity(`god`); // Should pick a better status
    
 });
+
+// User join block
+client.on("guildAdd", async Member => {
+
+    // Check that the server is Firnando
+    if (Member.guild.id != firnandoID) return;
+
+    // Send A Funny into general
+    client.channels.cache.get('642203556841127958').send('https://www.youtube.com/watch?v=R2kovI6tpRE'); 
+
+    // Send message into log channel
+    client.channels.cache.get('833783384937070613').send(User.displayName + ' has joined the server');
+
+    // Send something into the logs
+    console.log(timestamp() + " " + User.displayName + " has joined the server."); 
+
+});
+
+// User leave block
+client.on("guildMemberRemove", async Member => {
+
+    // Check that the server is Firnando
+    if (Member.guild.id != firnandoID) return;
+
+    // Send message into log channel
+    client.channels.cache.get('833783384937070613').send(Member.displayName + ' has left the server'); 
+
+    // Send something into the logs
+    console.log(timestamp() + " " + Member.displayName + " has left the server."); 
+
+});
+
 
 // Dynamic command handler
 client.on('message', message => {
@@ -127,6 +162,9 @@ client.on('message', message => {
     // Otherwise assume that the message is just a normal message to be handled by the response handler
 
     // Reponse handler:
+
+    // If the server does not have the response module, return
+    if (!resMod.includes(message.guild.id)) return;
 
     //Sanitize Input
     const sanitized = message.content.replace(/[^\w\s]|_/g, "");
