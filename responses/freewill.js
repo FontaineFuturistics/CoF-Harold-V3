@@ -4,7 +4,7 @@ module.exports = {
     // whether a particular message warrents this response.
     // This trigger word should be the least common word of
     // all of the trigger words
-    initTrig: "free will",
+    initTrig: "will",
 
     // This is the array representing all other trigger words
     // Harold will first check if a message has the first trigger
@@ -13,7 +13,7 @@ module.exports = {
     // This to be a single String value instead of an array
     // If this response is triggered by a single word, set the single
     // String value to be the same as the first trigger word
-    trigs: ["determinism"],
+    trigs: ["free"] ,
 
     // This is the chance that harold responds to the set of words for this response
     // This is represented as a 1 in x chance, where x is the number below.
