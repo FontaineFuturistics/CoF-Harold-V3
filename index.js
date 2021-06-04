@@ -198,6 +198,7 @@ client.on('message', message => {
                 // If the response has a complex trigger, call that, otherwise do it in index
                 if (typeof client.responses.get(cword).compTrig == "function") {
                     client.responses.get(cword).compTrig(message);
+                    return;
                 } else {
 
                     // Decide whether or not to respond

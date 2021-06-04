@@ -30,11 +30,21 @@ module.exports = {
 
         // If the user was Alana, say something special, otherwise, say something generic
         if (senduserID === alanaID) {
+
+            // Send the message
             message.channel.send("I want a divorce");
+
+            // Return
             return;
+
         } else {
+
+            // Send the message
             message.channel.send("I had zero expectations for you mortal, yet you still have disappointed me")
+
+            // Return
             return;
+
         }
 
     }
