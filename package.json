@@ -1,0 +1,27 @@
+{
+  "name": "harold-version-3",
+  "version": "1.0.0",
+  "description": "The official bot for the Church of Firnando",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "no idea"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FontaineFuturistics/CoF-Harold-V3.git"
+  },
+  "keywords": [
+    "Discord"
+  ],
+  "author": "Liam Estell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FontaineFuturistics/CoF-Harold-V3/issues"
+  },
+  "homepage": "https://github.com/FontaineFuturistics/CoF-Harold-V3#readme"
+}
