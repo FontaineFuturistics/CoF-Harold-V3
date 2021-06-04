@@ -172,7 +172,6 @@ client.on('message', message => {
                 // Send the message
                 message.channel.send(response);
             }
-
         }
     }
 
