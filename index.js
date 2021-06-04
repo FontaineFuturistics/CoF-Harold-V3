@@ -61,6 +61,9 @@ const startup = config.startup;
 // Response module array
 const resMod = config.response;
 
+// Load an array of all default emoji's for Harold
+const defEmojis = require('./DefaultEmojis.json');
+
 /* Join link:
  * https://discord.com/api/oauth2/authorize?client_id=<746029175294656582>&scope=applications.commands
  */
@@ -198,6 +201,7 @@ client.on('message', message => {
                 // If the response has a complex trigger, call that, otherwise do it in index
                 if (typeof client.responses.get(cword).compTrig == "function") {
                     client.responses.get(cword).compTrig(message);
+                    return;
                 } else {
 
                     // Decide whether or not to respond
@@ -221,6 +225,58 @@ client.on('message', message => {
                     }
                 }
             }
+        }
+    }
+
+    // If execution has gotten to this point, the message was neither a command, nor a message harold will rspond to, and as such he may respond
+
+    // Reaction manager:
+
+    // Decide whether or not to react
+    var random = Math.floor(Math.random() * 8);
+
+    // If random is 0, react
+    if (random == 0) {
+
+        // Decide whether or not to use the default emoji selection or the guild specific emoji selection
+        var random = Math.floor(Math.random() * 2);
+
+        // If random is 0 use default emojis
+        if (random == 0) {
+
+            // Decide which emoji to use
+            var random = Math.floor(Math.random() * (parseInt(defEmojis.length, 10)));
+
+            // React to the message
+            message.react(defEmojis[random]);
+
+            // Return
+            return;
+
+        // Otherwise use guild specific emojis
+        } else {
+
+            // Get the emoji manager
+            var cGuild = message.guild.emojis.cache;
+
+            // Create an array to hold the emojis
+            var eArray = [];
+
+            // Load all emojis into an array
+            eArray.push(cGuild.map(GuildEmoji => GuildEmoji.identifier));
+
+            // Split the array along commas
+            eArray = eArray.toString().split(',');
+
+            // If there are no emojis, fail out
+            if (!eArray[0]) return;
+
+            // Now that the array is loaded, decide which array index to send
+            var random = Math.floor(Math.random() * (parseInt(eArray.length, 10)));
+
+            // React to the message
+            message.react(eArray[random].toString())
+
         }
     }
 });
