@@ -13,7 +13,7 @@ module.exports = {
     // This to be a single String value instead of an array
     // If this response is triggered by a single word, set the single
     // String value to be the same as the first trigger word
-    trigs: ["gay"],
+    trigs: ["homosexual"],
 
     // This is the chance that harold responds to the set of words for this response
     // This is represented as a 1 in x chance, where x is the number below.
