@@ -171,6 +171,10 @@ client.on('message', message => {
 
                 // Send the message
                 message.channel.send(response);
+
+                // Exit out so only one response is sent
+                return;
+
             }
         }
     }
