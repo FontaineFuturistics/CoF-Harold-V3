@@ -13,7 +13,7 @@ module.exports = {
     // This to be a single String value instead of an array
     // If this response is triggered by a single word, set the single
     // String value to be the same as the first trigger word
-    trigs: ["free"] ,
+    trigs: ["free"],
 
     // This is the chance that harold responds to the set of words for this response
     // This is represented as a 1 in x chance, where x is the number below.
@@ -24,6 +24,6 @@ module.exports = {
     // This is an array representing all response message for a particular response.
     // This does need to be an array, even if there is only one response it must be formatted
     // as an array, just with a singular value.
-    responses: ["Everything is determined, the beginning as well as the end, by forces over which we have no control. It is determined for the insect as well as for the star. Human beings, vegetables, or cosmic dust, we all dance to a mysterious tune, intoned in the distance by an invisible player.""],
+    responses: ["Everything is determined, the beginning as well as the end, by forces over which we have no control."],
 
 }
