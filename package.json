@@ -1,6 +1,6 @@
 {
   "name": "harold-version-3",
-  "version": "1.0.0",
+  "version": "3.3.1",
   "description": "The official bot for the Church of Firnando",
   "main": "index.js",
   "dependencies": {
