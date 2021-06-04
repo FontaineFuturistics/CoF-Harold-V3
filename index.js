@@ -154,11 +154,27 @@ client.on('message', message => {
 
         // Try to execute the command and report an error if it occurs
         try {
+
+            // Run the command
             client.commands.get(command).execute(message, args);
+
+            // Log it
             console.log(timestamp() + ' A ' + command + ' command was run by ' + senduserName)
+
+            // Return
+            return;
+
         } catch (error) {
+
+            // Log the error
             console.error(error);
+
+            // Inform the user of the error
             message.reply('There was an error trying to execute that command!');
+
+            // Return
+            return;
+
         }
     }
 
@@ -200,8 +216,13 @@ client.on('message', message => {
 
                 // If the response has a complex trigger, call that, otherwise do it in index
                 if (typeof client.responses.get(cword).compTrig == "function") {
+
+                    // Trigger the complex message function
                     client.responses.get(cword).compTrig(message);
+
+                    // Return
                     return;
+
                 } else {
 
                     // Decide whether or not to respond
