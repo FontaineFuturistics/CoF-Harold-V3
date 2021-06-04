@@ -161,7 +161,7 @@ client.on('message', message => {
                 var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).chance, 10)));
 
                 // If random isn't the lowest possible value, return
-                if (random != 0) return;
+                if (random != 0) continue;
 
                 // Generate a new random number to decide which response to give
                 var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).responses.length, 10)));
