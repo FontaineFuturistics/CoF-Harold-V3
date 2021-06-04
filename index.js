@@ -155,7 +155,7 @@ client.on('message', message => {
             }
 
             // If all trigger words for the current response are present, run the response
-            if (allTrigs = true) {
+            if (allTrigs == true) {
 
                 // Decide whether or not to respond
                 var random = Math.floor(Math.random() * (parseInt(client.responses.get(cword).chance, 10)));

@@ -4,7 +4,7 @@ module.exports = {
     initTrig: "love",
 
     // All subsequent trigger words
-    trigs: "harold",
+    trigs: [ "harold" ],
 
     // The chance (represented by 1 in x) that the response triggers
     chance: 1,
