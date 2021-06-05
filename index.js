@@ -108,10 +108,10 @@ client.on("guildMemberAdd", async Member => {
     client.channels.cache.get('642203556841127958').send('https://www.youtube.com/watch?v=R2kovI6tpRE'); 
 
     // Send message into log channel
-    client.channels.cache.get('833783384937070613').send(Member.displayName + ' has joined the server');
+    client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has joined the server');
 
     // Send something into the logs
-    console.log(timestamp() + " " + Member.displayName + " has joined the server."); 
+    console.log(timestamp() + " " + Member.user.tag + " has joined the server."); 
 
 });
 
@@ -122,10 +122,10 @@ client.on("guildMemberRemove", async Member => {
     if (Member.guild.id != firnandoID) return;
 
     // Send message into log channel
-    client.channels.cache.get('833783384937070613').send(Member.displayName + ' has left the server'); 
+    client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has left the server'); 
 
     // Send something into the logs
-    console.log(timestamp() + " " + Member.displayName + " has left the server."); 
+    console.log(timestamp() + " " + Member.user.tag + " has left the server."); 
 
 });
 
