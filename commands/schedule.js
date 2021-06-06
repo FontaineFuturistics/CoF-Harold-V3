@@ -8,38 +8,38 @@ module.exports = {
 
     // The code of the command
     execute(message, args) {
-        // The content of the command
-        let serverID = message.guild.id;
-        let firnandoID = '642203556312776714';
-        let yruuID = '827570784930365480';
-        let uuccID = '773618438135873558';
-        let testServerID = '742876189009641562'
-        if (serverID === firnandoID) { 
-        message.channel.send(
-            "**Sunday**: \n" +
-            "**Monday**:\n" +
-            "**Tuesday**: Discussion night at 8:00 pm EST\n" +
-            "**Wednesday**: Council meeting at 5:00 pm EST\n" +
-            "**Thursday**:\n" +
-            "**Friday**: Weekly Games night or monthly movie night at 8:00pm EST\n" +
-            "**Saturday**: Monthly Minecraft event");
-            return
-        }
-        
-        else if (serverID === yruuID) {
-        message.channel.send
-        ('**Sunday**: Biweekly YRUU meeting');
-        return
-        }
 
-        else if (serverID === testServerID) {
-            message.channel.send
-            ('**Sunday**: Schedule Test Successful');
-            return
+        // Variable to store whether a schedule was sent
+        var sentMsg = false;
+
+        // The serverID where the command was sent
+        const serverID = message.guild.id;
+
+        // The file with all of the schedule
+        const schedules = require("../Schedule.json");
+
+        // Check to see if any of the keys in the json match the current ID
+        for (const key in schedules) {
+
+            // If the server matches a cached schedule, send the schedule
+            if (key === serverID) {
+
+                // Send the schedule
+                message.channel.send("Schedule String:\n" + schedules[key].join(''));
+
+                // Set sentMsg to true
+                sentMsg = true;
+
             }
 
-        else message.channel.send('No schedule exists for this server');
-        return
+        }
+
+        // If a schedule wasn't found, send an error message
+        if (sentMsg == false) {
+
+            message.channel.send("No schedule exists for this server");
+
+        }
 
     },
 
