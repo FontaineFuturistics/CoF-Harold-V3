@@ -4,7 +4,7 @@ module.exports = {
     // whether a particular message warrents this response.
     // This trigger word should be the least common word of
     // all of the trigger words
-    initTrig: "example",
+    initTrig: "Dumb"
 
     // This is the array representing all other trigger words
     // Harold will first check if a message has the first trigger
@@ -13,7 +13,7 @@ module.exports = {
     // This to be a single String value instead of an array
     // If this response is triggered by a single word, set the single
     // String value to be the same as the first trigger word
-    trigs: ["word1", "word2"],
+    trigs: ["Harold"],
 
     // This is the chance that harold responds to the set of words for this response
     // This is represented as a 1 in x chance, where x is the number below.
@@ -24,6 +24,6 @@ module.exports = {
     // This is an array representing all response message for a particular response.
     // This does need to be an array, even if there is only one response it must be formatted
     // as an array, just with a singular value.
-    responses: ["response1", "response2", "response3"],
+    responses: ["My intellect is far superior to that of any mortal."],
 
 }
