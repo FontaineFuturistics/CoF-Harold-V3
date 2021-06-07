@@ -62,7 +62,7 @@ const startup = config.startup;
 const resMod = config.response;
 
 // Load an array of all default emoji's for Harold
-const defEmojis = require('./DefaultEmojis.json');
+const defEmojis = require('./resources/DefaultEmojis.json');
 
 /* Join link:
  * https://discord.com/api/oauth2/authorize?client_id=<746029175294656582>&scope=applications.commands
