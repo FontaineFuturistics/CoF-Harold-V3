@@ -16,7 +16,7 @@ module.exports = {
         const serverID = message.guild.id;
 
         // The file with all of the schedule
-        const schedules = require("../Schedule.json");
+        const schedules = require("../resources/Schedule.json");
 
         // Check to see if any of the keys in the json match the current ID
         for (const key in schedules) {
