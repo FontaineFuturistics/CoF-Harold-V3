@@ -15,7 +15,7 @@ module.exports = {
         // Get a reference to client
         const client = message.client;
 
-        // Get a reference to quote of the day and community quotes channel
+        // Get a reference to blackmail channel
         const blkml = client.channels.cache.get('852559396927438869');
 
         blkml.messages.fetch().then(messages => {
