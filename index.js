@@ -254,7 +254,7 @@ client.on('message', message => {
     // Reaction manager:
 
     // Decide whether or not to react
-    var random = Math.floor(Math.random() * 8);
+    var random = Math.floor(Math.random() * 12);
 
     // If random is 0, react
     if (random == 0) {
