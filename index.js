@@ -156,18 +156,22 @@ client.on('message', message => {
         // Try to execute the command and report an error if it occurs
         try {
 
-            // Check that the module the command is in is active in the server in question
-            if (!modules[client.commands.get(command).module].includes(message.guild.id)) {
+            // Check if the module is default
+            if (!(client.commands.get(command).module === "default")) {
 
-                // Send an error
-                message.reply("That module is not active in this server");
+                // Check that the module the command is in is active in the server in question
+                if (!modules[client.commands.get(command).module].includes(message.guild.id)) {
 
-                // Log it
-                console.log(timestamp() + ' A ' + command + ' command was invoked in a server without its module by ' + senduserName)
+                    // Send an error
+                    message.reply("That module is not active in this server");
 
-                // Return
-                return;
+                    // Log it
+                    console.log(timestamp() + ' A ' + command + ' command was invoked in a server without its module by ' + senduserName)
 
+                    // Return
+                    return;
+
+                }
             }
 
             // Run the command
