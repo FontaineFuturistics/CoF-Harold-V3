@@ -6,6 +6,9 @@ module.exports = {
     // The command description when the help command is run
     usage: "Parses D&D dice in the form XdY(+/-)Z",
 
+    // The commands module (admin, firnando, default)
+    module: "default",
+
     // The code of the command
     execute(message, args) {
 

@@ -6,6 +6,9 @@ module.exports = {
     // The command description when the help command is run
     usage: "Returns a random quote from quote-of-the-day or community-quotes",
 
+    // The commands module (admin, firnando, default)
+    module: "firnando",
+
     // The code of the command
     execute(message, args) {
 

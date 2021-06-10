@@ -3,6 +3,7 @@ require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require('fs');
 const config = require('./config.json');
+const modules = require('./resources/Modules.json');
 
 // Instantiate the client
 const client = new Discord.Client();
@@ -59,7 +60,7 @@ const uuccBotCmd = '773620818373902348';
 const startup = config.startup;
 
 // Response module array
-const resMod = config.response;
+const resMod = modules.response;
 
 // Load an array of all default emoji's for Harold
 const defEmojis = require('./resources/DefaultEmojis.json');
@@ -154,6 +155,20 @@ client.on('message', message => {
 
         // Try to execute the command and report an error if it occurs
         try {
+
+            // Check that the module the command is in is active in the server in question
+            if (!modules[client.commands.get(command).module].includes(message.guild.id)) {
+
+                // Send an error
+                message.reply("That module is not active in this server");
+
+                // Log it
+                console.log(timestamp() + ' A ' + command + ' command was invoked in a server without its module by ' + senduserName)
+
+                // Return
+                return;
+
+            }
 
             // Run the command
             client.commands.get(command).execute(message, args);

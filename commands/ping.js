@@ -6,6 +6,9 @@ module.exports = {
     // Set the description
     usage: "Returns the current ping to the Discord API",
 
+    // The commands module (admin, firnando, default)
+    module: "default",
+
     // The command
     async execute(message, args) {
 

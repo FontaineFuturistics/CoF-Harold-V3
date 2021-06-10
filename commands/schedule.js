@@ -6,6 +6,9 @@ module.exports = {
     // The command description when the help command is run
     usage: "sends a list of regularly scheduled events relevent to standard users of the server",
 
+    // The commands module (admin, firnando, default)
+    module: "default",
+
     // The code of the command
     execute(message, args) {
 
