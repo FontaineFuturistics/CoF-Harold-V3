@@ -6,6 +6,9 @@ module.exports = {
     // The command description when the help command is run
     usage: "Lists all valid commands and their usage",
 
+    // The commands module (admin, firnando, default)
+    module: "default",
+
     // The code of the command
     execute(message, args) {
 

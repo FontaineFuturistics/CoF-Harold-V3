@@ -6,6 +6,9 @@ module.exports = {
     // The command description when the help command is run
     usage: "Returns whether or not the user has an administrative role",
 
+    // The commands module (admin, firnando, default)
+    module: "admin",
+
     // The code of the command
     execute(message, args) {
 

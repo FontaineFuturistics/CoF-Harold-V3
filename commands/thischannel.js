@@ -6,6 +6,9 @@ module.exports = {
     // Usage
     usage: "Returns the channel ID",
 
+    // The commands module (admin, firnando, default)
+    module: "default",
+
     // Code
     execute(message, args) {
 
