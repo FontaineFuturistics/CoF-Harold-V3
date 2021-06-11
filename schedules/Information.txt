@@ -1,7 +1,0 @@
-As JSON does not allow comments, and the way this works currently does not allow the file names to be anything except server IDs,
-(though this could easily be changed if need be), i am forced to make this.
-
-Server IDs:
-642203556312776714 = The Church of Firnando
-742876189009641562 = Lordmoose213s testing server
-827570784930365480 = YRUU Discord Server server
