@@ -3,6 +3,7 @@ require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require('fs');
 const config = require('./config.json');
+const modules = require('./resources/Modules.json');
 
 // Instantiate the client
 const client = new Discord.Client();
@@ -59,10 +60,10 @@ const uuccBotCmd = '773620818373902348';
 const startup = config.startup;
 
 // Response module array
-const resMod = config.response;
+const resMod = modules.response;
 
 // Load an array of all default emoji's for Harold
-const defEmojis = require('./DefaultEmojis.json');
+const defEmojis = require('./resources/DefaultEmojis.json');
 
 /* Join link:
  * https://discord.com/api/oauth2/authorize?client_id=<746029175294656582>&scope=applications.commands
@@ -108,10 +109,10 @@ client.on("guildMemberAdd", async Member => {
     client.channels.cache.get('642203556841127958').send('https://www.youtube.com/watch?v=R2kovI6tpRE'); 
 
     // Send message into log channel
-    client.channels.cache.get('833783384937070613').send(Member.displayName + ' has joined the server');
+    client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has joined the server');
 
     // Send something into the logs
-    console.log(timestamp() + " " + Member.displayName + " has joined the server."); 
+    console.log(timestamp() + " " + Member.user.tag + " has joined the server."); 
 
 });
 
@@ -122,10 +123,10 @@ client.on("guildMemberRemove", async Member => {
     if (Member.guild.id != firnandoID) return;
 
     // Send message into log channel
-    client.channels.cache.get('833783384937070613').send(Member.displayName + ' has left the server'); 
+    client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has left the server'); 
 
     // Send something into the logs
-    console.log(timestamp() + " " + Member.displayName + " has left the server."); 
+    console.log(timestamp() + " " + Member.user.tag + " has left the server."); 
 
 });
 
@@ -154,6 +155,24 @@ client.on('message', message => {
 
         // Try to execute the command and report an error if it occurs
         try {
+
+            // Check if the module is default
+            if (!(client.commands.get(command).module === "default")) {
+
+                // Check that the module the command is in is active in the server in question
+                if (!modules[client.commands.get(command).module].includes(message.guild.id)) {
+
+                    // Send an error
+                    message.reply("That module is not active in this server");
+
+                    // Log it
+                    console.log(timestamp() + ' A ' + command + ' command was invoked in a server without its module by ' + senduserName)
+
+                    // Return
+                    return;
+
+                }
+            }
 
             // Run the command
             client.commands.get(command).execute(message, args);
@@ -254,7 +273,7 @@ client.on('message', message => {
     // Reaction manager:
 
     // Decide whether or not to react
-    var random = Math.floor(Math.random() * 8);
+    var random = Math.floor(Math.random() * 12);
 
     // If random is 0, react
     if (random == 0) {

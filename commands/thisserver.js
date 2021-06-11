@@ -6,6 +6,9 @@ module.exports = {
     // The command description when the help command is run
     usage: "Returns server ID",
 
+    // The commands module (admin, firnando, default)
+    module: "default",
+
     // The code of the command
     execute(message, args) {
 
