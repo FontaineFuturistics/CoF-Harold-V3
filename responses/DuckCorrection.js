@@ -4,7 +4,7 @@ module.exports = {
     // whether a particular message warrents this response.
     // This trigger word should be the least common word of
     // all of the trigger words
-    initTrig: "example",
+    initTrig: "fuck",
 
     // This is the array representing all other trigger words
     // Harold will first check if a message has the first trigger
