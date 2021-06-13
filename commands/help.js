@@ -22,7 +22,7 @@ module.exports = {
         content.push("**Here is a list of all valid commands:**\n");
 
         // Populate the variable with all commands and their usage
-        content.push(commands.map(command => ("**" + command.name + ":** " + command.usage)).join("\n"));
+        content.push(commands.map(command => ("**" + command.name + ":** " + command.usage)).join("\n") );
 
         // Send the help message
         message.channel.send(content, { split: true });
