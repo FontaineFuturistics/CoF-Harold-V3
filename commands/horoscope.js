@@ -4,7 +4,7 @@ module.exports = {
     name: "horoscope",
 
     // The command description when the help command is run
-    usage: "Tells you your horoscope for the day",
+    usage: "Returns your horoscope for the day",
 
     // The commands module (admin, firnando, default)
     module: "default",
