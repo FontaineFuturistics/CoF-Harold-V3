@@ -12,6 +12,20 @@ module.exports = {
     // The code of the command
     execute(message, args) {
 
+        // Get the isAdmin function
+        let adminCmd = require("./admin.js");
+
+        // Check that the user running the command is an admin
+        if (adminCmd.isAdmin(message) == false) {
+
+            // Tell the user they aren't an admin
+            message.channel.send("You do not have permission to run that command")
+
+            // Return
+            return;
+
+        }
+
         // Get the member reference
         let tmem = message.mentions.members.first();
 
