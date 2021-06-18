@@ -130,7 +130,6 @@ client.on("guildMemberRemove", async Member => {
 
 });
 
-
 // Dynamic command handler
 client.on('message', message => {
 

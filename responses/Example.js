@@ -13,17 +13,17 @@ module.exports = {
     // This to be a single String value instead of an array
     // If this response is triggered by a single word, set the single
     // String value to be the same as the first trigger word
-    trigs: ["fuck"],
+    trigs: ["word1", "word2"],
 
     // This is the chance that harold responds to the set of words for this response
     // This is represented as a 1 in x chance, where x is the number below.
     // If you want a response to trigger all the time, set this to 1,
     // If it should trigger 50% of the time, set it to 2, etc.
-    chance: 3,
+    chance: 1,
 
     // This is an array representing all response message for a particular response.
     // This does need to be an array, even if there is only one response it must be formatted
     // as an array, just with a singular value.
-    responses: ["Im certain you meant Duck.", "Im sure you meant to say Duck.", "*Duck, mortal."],
+    responses: ["response1", "response2", "response3"],
 
 }
