@@ -93,6 +93,14 @@ module.exports = {
                     // For each result run against the individual lexical entries
                     for (lexEn of result.lexicalEntries) {
 
+                        // If lexEn.entries[0].senses doesn't exist, don't try to iterate it
+                        if (!lexEn.entries[0].senses) {
+
+                            // Continue
+                            continue;
+
+                        }
+
                         // For each sense within the entry of each lexical entry
                         for (sense of lexEn.entries[0].senses) {
 
