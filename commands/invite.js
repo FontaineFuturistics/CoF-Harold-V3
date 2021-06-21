@@ -28,7 +28,7 @@ module.exports = {
         var time = today.getHours() + ":" + (today.getMinutes() < 10 ? '0' : '') + today.getMinutes();
 
         // Create the invite promise
-        client.channels.cache.get(fGenId).createInvite({}, false, 86400, 1, true, ("Per request by " + message.author.tag)).then(invite => {
+        client.channels.cache.get(fGenId).createInvite({}, false, 86400, 1, false, ("Per request by " + message.author.tag)).then(invite => {
 
             // Create the DM promise
             message.author.createDM().then(channel => {
