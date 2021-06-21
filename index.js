@@ -128,6 +128,18 @@ client.on("guildMemberRemove", async Member => {
     // Send message into log channel
     client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has left the server'); 
 
+    // Get the user's list of roles
+    let roleList = []
+
+    // Add all roles to the rolelist
+    roleList.push(Member.roles.cache.map(cRole => cRole.toString()));
+
+    // Make a string of all the roles
+    let roleString = roleList.join(",").replace(/,/g, "\n");
+
+    // Send the role list into the log channel
+    client.channels.cache.get('833783384937070613').send('Their roles were:\n' + roleString); 
+
     // Send something into the logs
     console.log(timestamp() + " " + Member.user.tag + " has left the server."); 
 
