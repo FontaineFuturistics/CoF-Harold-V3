@@ -65,6 +65,9 @@ const resMod = modules.response;
 // Load an array of all default emoji's for Harold
 const defEmojis = require('./resources/DefaultEmojis.json');
 
+// Load array of banned channels
+const bannedChannels = config.bannedChannels;
+
 /* Join link:
  * https://discord.com/api/oauth2/authorize?client_id=<746029175294656582>&scope=applications.commands
  */
@@ -135,6 +138,9 @@ client.on('message', message => {
 
     // Check that the message is not from a bot
     if (message.author.bot) return;
+
+    // Check if the channel is a banned channel
+    if (bannedChannels.includes(message.channel.id)) return;
 
     // If the message is a command, run the command handler
     if (message.content.startsWith(config.prefix)) {
@@ -272,7 +278,7 @@ client.on('message', message => {
     // Reaction manager:
 
     // Decide whether or not to react
-    var random = Math.floor(Math.random() * 12);
+    var random = Math.floor(Math.random() * 15);
 
     // If random is 0, react
     if (random == 0) {
