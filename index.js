@@ -154,6 +154,19 @@ client.on('message', message => {
     // Check if the channel is a banned channel
     if (bannedChannels.includes(message.channel.id)) return;
 
+    // If the channel is a DM channel, exit out
+    try {
+
+        // Try to get the guild id, if this fails it means the channel is a DM channel
+        let temp = message.guild.id;
+
+    } catch (error) {
+
+        // If it failed, return so this runs ends
+        return;
+
+    }
+
     // If the message is a command, run the command handler
     if (message.content.startsWith(config.prefix)) {
 
