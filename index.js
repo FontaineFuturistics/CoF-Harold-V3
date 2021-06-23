@@ -111,6 +111,12 @@ client.on("guildMemberAdd", async Member => {
     // Send A Funny into general
     client.channels.cache.get('642203556841127958').send('https://www.youtube.com/watch?v=R2kovI6tpRE'); 
 
+    // Find the muted role
+    let role = Member.guild.roles.cache.find(role => role.name === "Harold Access");
+
+    // Apply the role
+    Member.roles.add(role);
+
     // Send message into log channel
     client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has joined the server');
 
