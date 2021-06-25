@@ -65,6 +65,9 @@ const resMod = modules.response;
 // Load an array of all default emoji's for Harold
 const defEmojis = require('./resources/DefaultEmojis.json');
 
+// Load array of banned channels
+const bannedChannels = config.bannedChannels;
+
 /* Join link:
  * https://discord.com/api/oauth2/authorize?client_id=<746029175294656582>&scope=applications.commands
  */
@@ -108,6 +111,12 @@ client.on("guildMemberAdd", async Member => {
     // Send A Funny into general
     client.channels.cache.get('642203556841127958').send('https://www.youtube.com/watch?v=R2kovI6tpRE'); 
 
+    // Find the muted role
+    let role = Member.guild.roles.cache.find(role => role.name === "Harold Access");
+
+    // Apply the role
+    Member.roles.add(role);
+
     // Send message into log channel
     client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has joined the server');
 
@@ -125,6 +134,18 @@ client.on("guildMemberRemove", async Member => {
     // Send message into log channel
     client.channels.cache.get('833783384937070613').send(Member.user.tag + ' has left the server'); 
 
+    // Get the user's list of roles
+    let roleList = []
+
+    // Add all roles to the rolelist
+    roleList.push(Member.roles.cache.map(cRole => cRole.toString()));
+
+    // Make a string of all the roles
+    let roleString = roleList.join(",").replace(/,/g, "\n");
+
+    // Send the role list into the log channel
+    client.channels.cache.get('833783384937070613').send('Their roles were:\n' + roleString); 
+
     // Send something into the logs
     console.log(timestamp() + " " + Member.user.tag + " has left the server."); 
 
@@ -135,6 +156,22 @@ client.on('message', message => {
 
     // Check that the message is not from a bot
     if (message.author.bot) return;
+
+    // Check if the channel is a banned channel
+    if (bannedChannels.includes(message.channel.id)) return;
+
+    // If the channel is a DM channel, exit out
+    try {
+
+        // Try to get the guild id, if this fails it means the channel is a DM channel
+        let temp = message.guild.id;
+
+    } catch (error) {
+
+        // If it failed, return so this runs ends
+        return;
+
+    }
 
     // If the message is a command, run the command handler
     if (message.content.startsWith(config.prefix)) {
@@ -272,7 +309,7 @@ client.on('message', message => {
     // Reaction manager:
 
     // Decide whether or not to react
-    var random = Math.floor(Math.random() * 12);
+    var random = Math.floor(Math.random() * 15);
 
     // If random is 0, react
     if (random == 0) {
