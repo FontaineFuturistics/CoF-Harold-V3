@@ -44,7 +44,7 @@ module.exports = {
         });
 
         // Respond to the message
-        message.reply("<@&642505336410079232> I have deleted a message from <@" + message.author.id + "> because it contained a slur. This is a notice to all in this conversation that slurs are explicitly banned on the Firnanod server");
+        message.channel.send("<@&642505336410079232> I have deleted a message from <@" + message.author.id + "> because it contained a slur. This is a notice to all in this conversation that slurs are explicitly banned on the Firnanod server");
 
         // Delete the message
         message.delete();
