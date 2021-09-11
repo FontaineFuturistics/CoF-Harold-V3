@@ -62,8 +62,8 @@ const startup = config.startup;
 // Response module array
 const resMod = modules.response;
 
-// Load an array of all default emoji's for Harold
-const defEmojis = require('./resources/DefaultEmojis.json');
+// Server containing the default emojis
+const defEmojis = "773618438135873558";
 
 // Load array of banned channels
 const bannedChannels = config.bannedChannels;
@@ -320,11 +320,26 @@ client.on('message', message => {
         // If random is 0 use default emojis
         if (random == 0) {
 
-            // Decide which emoji to use
-            var random = Math.floor(Math.random() * (parseInt(defEmojis.length, 10)));
+            // Get the emoji manager
+            var cGuild = client.guilds.cache.get(defEmojis).emojis.cache;
+
+            // Create an array to hold the emojis
+            var eArray = [];
+
+            // Load all emojis into an array
+            eArray.push(cGuild.map(GuildEmoji => GuildEmoji.identifier));
+
+            // Split the array along commas
+            eArray = eArray.toString().split(',');
+
+            // If there are no emojis, fail out
+            if (!eArray[0]) return;
+
+            // Now that the array is loaded, decide which array index to send
+            var random = Math.floor(Math.random() * (parseInt(eArray.length, 10)));
 
             // React to the message
-            message.react(defEmojis[random]);
+            message.react(eArray[random].toString())
 
             // Return
             return;
