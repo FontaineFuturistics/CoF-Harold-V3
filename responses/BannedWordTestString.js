@@ -39,12 +39,12 @@ module.exports = {
         message.author.createDM().then(channel => {
 
             // DM the user their warning
-            channel.send("I deleted a message you sent on the Firnando server because it contained a slur, the Firnanod server has a strict no-slur policy, continued violation of this policy will result in administrative action.\nThis is an automated message do not respond");
+            channel.send("I deleted a message you sent on the Firnando server because it contained a slur, the Firnando server has a strict no-slur policy, continued violation of this policy will result in administrative action.\nThis is an automated message do not respond");
 
         });
 
         // Respond to the message
-        message.channel.send("<@&642505336410079232> I have deleted a message from <@" + message.author.id + "> because it contained a slur. This is a notice to all in this conversation that slurs are explicitly banned on the Firnanod server");
+        message.channel.send("<@&642505336410079232> I have deleted a message from <@" + message.author.id + "> because it contained a slur. This is a notice to all in this conversation that slurs are explicitly banned on the Firnando server");
 
         // Delete the message
         message.delete();
