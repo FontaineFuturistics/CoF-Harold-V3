@@ -63,7 +63,7 @@ const startup = config.startup;
 const resMod = modules.response;
 
 // Server containing the default emojis
-const defEmojis = "773618438135873558";
+const defEmojis = "852559356573777920";
 
 // Load array of banned channels
 const bannedChannels = config.bannedChannels;
@@ -150,6 +150,66 @@ client.on("guildMemberRemove", async Member => {
     console.log(timestamp() + " " + Member.user.tag + " has left the server."); 
 
 });
+
+/* Whenever someone joins, leaves, mutes, or unmutes
+client.on("voiceStateUpdate", async (oldState, newState) => {
+
+    // If the someone is a bot, ignore
+    if (newState.member.user.bot) return;
+
+    // If the action was joining or leave, procede
+    if (oldState.channelID != newState.channelID) {
+
+        // If the action was joining
+        if (newState.channelID) {
+
+            // Pick a random number
+            var random = Math.floor(Math.random() * 10);
+
+            // If random is 0, react
+            if (random == 0) {
+
+                // Catch the error if it was a stage channel
+                try {
+
+                    // Join the voice channel
+                    newState.channel.join();
+
+                    return;
+
+                    // Catch the error
+                } catch (err) {
+
+                    return;
+
+                }
+
+            }
+
+            // If the action was leaving
+        } else {
+
+            // If there are no members left leave
+            if (oldState.channel.members.first) {
+
+                // Catch the error if it was a stage channel
+                try {
+
+                    // Join the voice channel
+                    oldState.channel.leave();
+
+                    return;
+
+                } catch (err) {
+
+                    return;
+
+                }
+            }
+        }
+    }
+
+}); Needs OPUS */
 
 // Dynamic command handler
 client.on('message', message => {
@@ -304,7 +364,7 @@ client.on('message', message => {
         }
     }
 
-    // If execution has gotten to this point, the message was neither a command, nor a message harold will rspond to, and as such he may respond
+    // If execution has gotten to this point, the message was neither a command, nor a message harold will respond to, and as such he may use an emoji
 
     // Reaction manager:
 
