@@ -98,7 +98,7 @@ client.on('ready', () => {
 
 
     // Set status
-    client.user.setActivity(`god`); // Should pick a better status
+    client.user.setActivity(`the strings of time | f!help for commands`); // Should pick a better status
    
 });
 
