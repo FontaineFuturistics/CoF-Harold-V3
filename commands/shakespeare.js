@@ -136,15 +136,15 @@ module.exports = {
 
             var linenumber = args[2].toString();
 
-            while (linenumber.length < 4) {
-
-                var linenumber = "0" + linenumber;
-
-            }
-
         } else if (args[0] == "-q") {
 
-            var linenumber = Math.floor(Math.random() * (2000)) + 1;
+            var linenumber = (Math.floor(Math.random() * (2000)) + 1).toString();
+
+        }
+
+        while (linenumber.length < 4) {
+
+            var linenumber = "0" + linenumber;
 
         }
 
@@ -193,7 +193,7 @@ module.exports = {
                 } else {
 
                     // Get the quote text
-                    let text = sanitized.replace(/[^]*proseText:  /, "");
+                    let text = sanitized.replace(/[^]*Text:  /, "");
 
                     // Remove everything before the speaker name
                     var speaker = sanitized.replace(/[^]*Speaker: #/, "");
