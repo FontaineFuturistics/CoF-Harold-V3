@@ -25,7 +25,7 @@ module.exports = {
         }
 
         // Send the message
-        message.client.channels.cache.get('916694496874479616').send(sayMessage); 
+        message.client.channels.cache.get('916694471255678987').send(sayMessage); 
 
         // Return
         return;
