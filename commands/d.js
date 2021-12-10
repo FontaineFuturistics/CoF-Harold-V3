@@ -87,7 +87,7 @@ module.exports = {
         var dtotal = dtotalINT + dmodINT
 
         //Print the output
-        message.channel.send("I got **" + dtotal + "**\nNat: " + dtotalINT);
+        message.channel.send("You got **" + dtotal + "** (Nat " + dtotalINT + ")");
         return
     },
 
