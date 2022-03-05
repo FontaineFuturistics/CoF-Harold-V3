@@ -15,7 +15,6 @@ module.exports = {
         if (message.channel.id != '916694496874479616') {
 
             message.channel.send("This command is only for use in #harold-puppet");
-            message.channel.send("id: " + message.channel.id)
             return;
 
         }
