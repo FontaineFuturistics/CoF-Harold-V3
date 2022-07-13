@@ -228,7 +228,7 @@ client.on('message', message => {
 
     } catch (error) {
 
-        // If it failed, return so this runs ends
+        // If it failed, return so this run ends
         return;
 
     }
